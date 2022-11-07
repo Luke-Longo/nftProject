@@ -64,7 +64,7 @@ const { nft: collectionNft } = await metaplex.nfts().create({
 	sellerFeeBasisPoints: 0,
 	name: "Dingus",
 	symbol: "DING",
-	uri: "",
+	uri: "https://shdw-drive.genesysgo.net/7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ/0.json",
 	isCollection: true,
 	updateAuthority: collectionAuthority,
 });

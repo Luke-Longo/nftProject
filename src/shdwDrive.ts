@@ -30,9 +30,9 @@ const createAccount = async (
 const bucket = "7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ";
 const uploadCollectionImage = async () => {
 	const drive = await new ShdwDrive(connection, wallet).init();
-	const fileBuff = fs.readFileSync("./assets/0.png");
+	const fileBuff = fs.readFileSync("./assets/0.json");
 	const fileToUpload: ShadowFile = {
-		name: "0.png",
+		name: "0.json",
 		file: fileBuff,
 	};
 	const res = await drive.uploadFile(new PublicKey(bucket), fileToUpload, "v2");
