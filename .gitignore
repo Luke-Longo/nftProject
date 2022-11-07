@@ -17,6 +17,7 @@ coverage.json
 
 # don't push the environment vars!
 .env
+keypair.json
 
 # Built application files
 .DS*
