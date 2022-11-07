@@ -15,9 +15,11 @@ const kp = loadKeypair("./keypair.json");
 const wallet = new anchor.Wallet(kp);
 
 const createAccount = async (): Promise<string> => {
+	console.log("Creating account...");
 	const connection = new Connection(clusterApiUrl("mainnet-beta"));
-
+	console.log("Connected to: ", connection);
 	const drive = await new ShdwDrive(connection, wallet).init();
+	console.log(drive);
 	const resp = await drive.createStorageAccount("test", "444MB", "v2");
 	console.log(resp.transaction_signature);
 	return resp.shdw_bucket;
