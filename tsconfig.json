@@ -1,4 +1,11 @@
 {
+	"ts-node": {
+		// these options are overrides used only by ts-node
+		"compilerOptions": {
+			"module": "node16",
+			"target": "es2017"
+		}
+	},
 	"compilerOptions": {
 		"target": "es2017",
 		"lib": ["es6"],
@@ -13,5 +20,7 @@
 		"strict": true,
 		"noImplicitAny": true,
 		"skipLibCheck": true
-	}
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules"]
 }
