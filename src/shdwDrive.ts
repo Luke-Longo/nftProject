@@ -1,5 +1,5 @@
-import { ShdwDrive } from "@shadow-drive/sdk";
-import { Connection, clusterApiUrl, Keypair } from "@solana/web3.js";
+import { ShadowFile, ShdwDrive } from "@shadow-drive/sdk";
+import { Connection, clusterApiUrl, Keypair, PublicKey } from "@solana/web3.js";
 import * as anchor from "@project-serum/anchor";
 import * as dotenv from "dotenv";
 import fs from "fs";
@@ -13,18 +13,30 @@ const loadKeypair = (filename: string): Keypair => {
 // get the keypair and create anchor wallet
 const kp = loadKeypair("./keypair.json");
 const wallet = new anchor.Wallet(kp);
+const connection = new Connection(clusterApiUrl("mainnet-beta"), "max");
 
-const createAccount = async (): Promise<string> => {
-	console.log("Creating account...");
-	const connection = new Connection(clusterApiUrl("mainnet-beta"));
-	console.log("Connected to: ", connection);
+const createAccount = async (
+	name: string,
+	storage: string,
+	version: "v1" | "v2"
+): Promise<string> => {
 	const drive = await new ShdwDrive(connection, wallet).init();
-	console.log(drive);
-	const resp = await drive.createStorageAccount("test", "444MB", "v2");
-	console.log(resp.transaction_signature);
+	const resp = await drive.createStorageAccount("test", "333MB", "v2");
+	console.log("Storage account tx: ", resp.transaction_signature);
+	console.log("bucket: ", resp.shdw_bucket);
 	return resp.shdw_bucket;
 };
 
-const bucket = createAccount().then((bucket) => {
-	console.log(bucket);
-});
+const bucket = "7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ";
+const uploadCollectionImage = async () => {
+	const drive = await new ShdwDrive(connection, wallet).init();
+	const fileBuff = fs.readFileSync("./assets/0.png");
+	const fileToUpload: ShadowFile = {
+		name: "0.png",
+		file: fileBuff,
+	};
+	const res = await drive.uploadFile(new PublicKey(bucket), fileToUpload, "v2");
+	console.log("upload tx: ", res.finalized_locations[0]);
+};
+
+uploadCollectionImage();
