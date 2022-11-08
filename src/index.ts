@@ -25,7 +25,7 @@ const main = async () => {
 		.use(bundlrStorage());
 
 	const candyMachineSettings = {
-		itemsAvailable: toBigNumber(5000),
+		itemsAvailable: toBigNumber(10),
 		sellerFeeBasisPoints: 100, // 3.33%
 		// collection: {
 		// 	address: collectionNft.address,

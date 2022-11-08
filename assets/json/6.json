@@ -1,0 +1,58 @@
+{
+  "name": "Elegant Elves #6",
+  "symbol": "ELEL",
+  "description": "HOOOOOOOOOO NOOOOOOO",
+  "seller_fee_basis_points": 100,
+  "image": "6.png",
+  "external_url": "https://www.youtube.com/c/hashlipsnft",
+  "edition": 6,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Black"
+    },
+    {
+      "trait_type": "Eyeball",
+      "value": "Red"
+    },
+    {
+      "trait_type": "Eye color",
+      "value": "Purple"
+    },
+    {
+      "trait_type": "Iris",
+      "value": "Large"
+    },
+    {
+      "trait_type": "Shine",
+      "value": "Shapes"
+    },
+    {
+      "trait_type": "Bottom lid",
+      "value": "Middle"
+    },
+    {
+      "trait_type": "Top lid",
+      "value": "High"
+    }
+  ],
+  "properties": {
+    "files": [
+      {
+        "uri": "6.png",
+        "type": "image/png"
+      }
+    ],
+    "category": "image",
+    "creators": [
+      {
+        "address": "7ENXjJ23L5bYqGuJnu8bjPoSWW97SJ8kN77ro8TwMaBw",
+        "share": 50
+      },
+      {
+        "address": "44J3sCrf9HsAgubdmDUxuxyge8hSUxLmej1MiyKVNhSS",
+        "share": 50
+      }
+    ]
+  }
+}
