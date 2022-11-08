@@ -1,58 +1,58 @@
 {
-  "name": "Elegant Elves #8",
-  "symbol": "ELEL",
-  "description": "HOOOOOOOOOO NOOOOOOO",
-  "seller_fee_basis_points": 100,
-  "image": "8.png",
-  "external_url": "https://www.youtube.com/c/hashlipsnft",
-  "edition": 8,
-  "attributes": [
-    {
-      "trait_type": "Background",
-      "value": "Black"
-    },
-    {
-      "trait_type": "Eyeball",
-      "value": "Red"
-    },
-    {
-      "trait_type": "Eye color",
-      "value": "Red"
-    },
-    {
-      "trait_type": "Iris",
-      "value": "Small"
-    },
-    {
-      "trait_type": "Shine",
-      "value": "Shapes"
-    },
-    {
-      "trait_type": "Bottom lid",
-      "value": "Middle"
-    },
-    {
-      "trait_type": "Top lid",
-      "value": "High"
-    }
-  ],
-  "properties": {
-    "files": [
-      {
-        "uri": "8.png",
-        "type": "image/png"
-      }
-    ],
-    "category": "image",
-    "creators": [
-      {
-        "address": "7ENXjJ23L5bYqGuJnu8bjPoSWW97SJ8kN77ro8TwMaBw",
-        "share": 50
-      },
-      {
-        "address": "44J3sCrf9HsAgubdmDUxuxyge8hSUxLmej1MiyKVNhSS",
-        "share": 50
-      }
-    ]
-  }
+	"name": "Elegant Elves #8",
+	"symbol": "ELEL",
+	"description": "HOOOOOOOOOO NOOOOOOO",
+	"seller_fee_basis_points": 100,
+	"image": "https://shdw-drive.genesysgo.net/7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ/8.json",
+	"external_url": "https://www.youtube.com/c/hashlipsnft",
+	"edition": 8,
+	"attributes": [
+		{
+			"trait_type": "Background",
+			"value": "Black"
+		},
+		{
+			"trait_type": "Eyeball",
+			"value": "Red"
+		},
+		{
+			"trait_type": "Eye color",
+			"value": "Red"
+		},
+		{
+			"trait_type": "Iris",
+			"value": "Small"
+		},
+		{
+			"trait_type": "Shine",
+			"value": "Shapes"
+		},
+		{
+			"trait_type": "Bottom lid",
+			"value": "Middle"
+		},
+		{
+			"trait_type": "Top lid",
+			"value": "High"
+		}
+	],
+	"properties": {
+		"files": [
+			{
+				"uri": "8.png",
+				"type": "image/png"
+			}
+		],
+		"category": "image",
+		"creators": [
+			{
+				"address": "7ENXjJ23L5bYqGuJnu8bjPoSWW97SJ8kN77ro8TwMaBw",
+				"share": 50
+			},
+			{
+				"address": "44J3sCrf9HsAgubdmDUxuxyge8hSUxLmej1MiyKVNhSS",
+				"share": 50
+			}
+		]
+	}
 }

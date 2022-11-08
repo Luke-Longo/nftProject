@@ -4,6 +4,7 @@ import * as anchor from "@project-serum/anchor";
 import * as dotenv from "dotenv";
 import fs from "fs";
 dotenv.config();
+
 const loadKeypair = (filename: string): Keypair => {
 	const secret = JSON.parse(fs.readFileSync(filename).toString()) as number[];
 	const secretKey = Uint8Array.from(secret);
@@ -50,3 +51,33 @@ export const uploadCollectionSingle = async (
 	console.log("upload tx: ", res.finalized_locations[0]);
 	return res.finalized_locations[0];
 };
+
+export const uploadCollection = async (
+	items: number,
+	type: "json" | "png"
+): Promise<string[]> => {
+	// make sure to generate a new bucket for each collection
+	const drive = await new ShdwDrive(connection, wallet).init();
+	let locations = [];
+	for (let i = 0; i <= items; i++) {
+		const fileBuff = fs.readFileSync(
+			`./assets/${type === "json" ? "json" : "images"}/${i}.${type}`
+		);
+		const fileToUpload: ShadowFile = {
+			name: `${i}.${type}`,
+			file: fileBuff,
+		};
+		const res = await drive.uploadFile(new PublicKey(bucket), fileToUpload, "v2");
+		console.log("upload tx: ", res.finalized_locations[0]);
+		locations.push(res.finalized_locations[0]);
+	}
+	return locations;
+};
+
+const main = async () => {
+	const locations = await uploadCollection(9, "png");
+
+	console.log("locations: ", locations[9]);
+};
+
+main();

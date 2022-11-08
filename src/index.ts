@@ -20,7 +20,7 @@ const main = async () => {
 	// get the keypair and create anchor wallet
 	const collectionAuthority = loadKeypair("./keypair.json");
 
-	const connection = new Connection(clusterApiUrl("devnet"));
+	const connection = new Connection(clusterApiUrl("mainnet-beta"), "max");
 
 	const metaplex = Metaplex.make(connection)
 		.use(keypairIdentity(collectionAuthority))
