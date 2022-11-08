@@ -3,7 +3,7 @@
 	"symbol": "ELEL",
 	"description": "HOOOOOOOOOO NOOOOOOO",
 	"seller_fee_basis_points": 100,
-	"image": "https://shdw-drive.genesysgo.net/7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ/1.json",
+	"image": "https://shdw-drive.genesysgo.net/7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ/1.png",
 	"external_url": "https://www.youtube.com/c/hashlipsnft",
 	"edition": 1,
 	"attributes": [
@@ -39,7 +39,7 @@
 	"properties": {
 		"files": [
 			{
-				"uri": "1.png",
+				"uri": "https://shdw-drive.genesysgo.net/7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ/1.png",
 				"type": "image/png"
 			}
 		],

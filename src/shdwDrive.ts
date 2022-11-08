@@ -59,14 +59,29 @@ export const uploadCollection = async (
 	// make sure to generate a new bucket for each collection
 	const drive = await new ShdwDrive(connection, wallet).init();
 	let locations = [];
-	for (let i = 0; i <= items; i++) {
+
+	for (let i = 1; i <= items; i++) {
+		// const template = JSON.parse(
+		// 	fs.readFileSync("./assets/json/_template.json").toString()
+		// );
+
+		// template.name = template.name.replace("$number", i.toString());
+		// template.image = template.image.replace("$number", i.toString());
+		// template.properties.files[0].uri = template.properties.files[0].uri.replace(
+		// 	"$number",
+		// 	i.toString()
+		// );
+
+		// check which type of file we are uploading and if they start at 0 or 1
 		const fileBuff = fs.readFileSync(
-			`./assets/${type === "json" ? "json" : "images"}/${i}.${type}`
+			`./assets/${type === "json" ? "json" : "images"}/${i - 1}.${type}`
 		);
+
 		const fileToUpload: ShadowFile = {
 			name: `${i}.${type}`,
 			file: fileBuff,
 		};
+
 		const res = await drive.uploadFile(new PublicKey(bucket), fileToUpload, "v2");
 		console.log("upload tx: ", res.finalized_locations[0]);
 		locations.push(res.finalized_locations[0]);
@@ -74,10 +89,39 @@ export const uploadCollection = async (
 	return locations;
 };
 
-const main = async () => {
-	const locations = await uploadCollection(9, "png");
+export const editFiles = async (items: number, type: "json" | "png") => {
+	// make sure to generate a new bucket for each collection
+	const drive = await new ShdwDrive(connection, wallet).init();
+	for (let i = 1; i <= items; i++) {
+		// check which type of file we are uploading and if they start at 0 or 1
+		const fileBuff = fs.readFileSync(
+			`./assets/${type === "json" ? "json" : "images"}/${i - 1}.${type}`
+		);
 
-	console.log("locations: ", locations[9]);
+		const fileToUpload: ShadowFile = {
+			name: `${i - 1}.${type}`,
+			file: fileBuff,
+		};
+
+		const uri = `https://shdw-drive.genesysgo.net/7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ/${
+			i - 1
+		}.${type}`;
+
+		const editRes = await drive.editFile(
+			new PublicKey(bucket),
+			uri,
+			fileToUpload,
+			"v2"
+		);
+
+		console.log("edit tx: ", editRes.message);
+	}
+};
+
+const main = async () => {
+	// const locations = await uploadCollection(10, "json");
+
+	await editFiles(10, "json");
 };
 
 main();

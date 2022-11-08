@@ -26,50 +26,69 @@ const main = async () => {
 		.use(keypairIdentity(collectionAuthority))
 		.use(bundlrStorage());
 
-	const { nft: collectionNft } = await metaplex.nfts().create({
-		name: "Elegant Eyes",
-		uri: "https://shdw-drive.genesysgo.net/7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ/0.json",
-		sellerFeeBasisPoints: 0,
-		isCollection: true,
-		updateAuthority: collectionAuthority,
+	// const { nft: collectionNft } = await metaplex.nfts().create({
+	// 	name: "Elegant Eyes",
+	// 	uri: "https://shdw-drive.genesysgo.net/7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ/0.json",
+	// 	sellerFeeBasisPoints: 0,
+	// 	isCollection: true,
+	// 	updateAuthority: collectionAuthority,
+	// });
+
+	// const candyMachineSettings: CreateCandyMachineInput = {
+	// 	itemsAvailable: toBigNumber(10),
+	// 	sellerFeeBasisPoints: 100, // 3.33%
+	// 	collection: {
+	// 		address: collectionNft.address,
+	// 		updateAuthority: collectionAuthority,
+	// 	},
+	// 	symbol: "ELEY",
+	// 	creators: [
+	// 		{
+	// 			address: collectionAuthority.publicKey,
+	// 			share: 100,
+	// 		},
+	// 	],
+	// 	isMutable: true,
+	// 	itemSettings: {
+	// 		type: "configLines",
+	// 		prefixName: "Elegant Eye #$ID+1$",
+	// 		nameLength: 0,
+	// 		prefixUri:
+	// 			"https://shdw-drive.genesysgo.net/7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ/#$ID+1$.json",
+	// 		uriLength: 0,
+	// 		isSequential: false,
+	// 	},
+	// 	guards: {
+	// 		solPayment: { amount: sol(0.1), destination: collectionAuthority.publicKey },
+	// 		startDate: { date: toDateTime("2022-11-06T13:37:00Z") },
+	// 		// all other guards are disabled
+	// 	},
+	// };
+
+	// const { candyMachine } = await metaplex
+	// 	.candyMachines()
+	// 	.create(candyMachineSettings);
+
+	// console.log("Candy machine address:", candyMachine.address.toBase58());
+
+	const candyMachine = await metaplex.candyMachines().findByAddress({
+		address: new PublicKey("2Rn6Nqgp24wJgT3cq2Ey8rDaAbCN5vk3WsgCrcjPyYpf"),
 	});
+	let data = [];
+	for (let i = 0; i < 10; i++) {
+		data.push({
+			name: "Elegant Eye #" + (i + 1),
+			uri:
+				"https://shdw-drive.genesysgo.net/7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ/" +
+				(i + 1) +
+				".json",
+		});
+	}
 
-	const candyMachineSettings: CreateCandyMachineInput = {
-		itemsAvailable: toBigNumber(10),
-		sellerFeeBasisPoints: 100, // 3.33%
-		collection: {
-			address: collectionNft.address,
-			updateAuthority: collectionAuthority,
-		},
-		symbol: "ELEY",
-		creators: [
-			{
-				address: collectionAuthority.publicKey,
-				share: 100,
-			},
-		],
-		isMutable: true,
-		itemSettings: {
-			type: "configLines",
-			prefixName: "Elegant Eye #$ID+1$",
-			nameLength: 0,
-			prefixUri:
-				"https://shdw-drive.genesysgo.net/7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ/#$ID+1$.json",
-			uriLength: 0,
-			isSequential: false,
-		},
-		guards: {
-			solPayment: { amount: sol(0.1), destination: collectionAuthority.publicKey },
-			startDate: { date: toDateTime("2022-11-06T13:37:00Z") },
-			// all other guards are disabled
-		},
-	};
-
-	const { candyMachine } = await metaplex
-		.candyMachines()
-		.create(candyMachineSettings);
-
-	console.log("Candy machine address:", candyMachine.address.toBase58());
+	await metaplex.candyMachines().insertItems({
+		candyMachine,
+		items: data,
+	});
 };
 
 main();

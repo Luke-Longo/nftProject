@@ -1,0 +1,29 @@
+{
+	"name": "Elegant Elves #$number",
+	"symbol": "ELEY",
+	"description": "HOOOOOOOOOO NOOOOOOO",
+	"seller_fee_basis_points": 100,
+	"image": "https://shdw-drive.genesysgo.net/7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ/$number.png",
+	"external_url": "https://www.youtube.com/c/hashlipsnft",
+	"edition": 0,
+	"attributes": [],
+	"properties": {
+		"files": [
+			{
+				"uri": "https://shdw-drive.genesysgo.net/7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ/$number.png",
+				"type": "image/png"
+			}
+		],
+		"category": "image",
+		"creators": [
+			{
+				"address": "7ENXjJ23L5bYqGuJnu8bjPoSWW97SJ8kN77ro8TwMaBw",
+				"share": 50
+			},
+			{
+				"address": "44J3sCrf9HsAgubdmDUxuxyge8hSUxLmej1MiyKVNhSS",
+				"share": 50
+			}
+		]
+	}
+}
