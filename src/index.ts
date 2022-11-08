@@ -74,21 +74,24 @@ const main = async () => {
 	const candyMachine = await metaplex.candyMachines().findByAddress({
 		address: new PublicKey("2Rn6Nqgp24wJgT3cq2Ey8rDaAbCN5vk3WsgCrcjPyYpf"),
 	});
-	let data = [];
-	for (let i = 0; i < 10; i++) {
-		data.push({
-			name: "Elegant Eye #" + (i + 1),
-			uri:
-				"https://shdw-drive.genesysgo.net/7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ/" +
-				(i + 1) +
-				".json",
-		});
-	}
 
-	await metaplex.candyMachines().insertItems({
-		candyMachine,
-		items: data,
-	});
+	// let data = [];
+	// for (let i = 1; i < 10; i++) {
+	// 	data.push({
+	// 		name: "",
+	// 		uri: "",
+	// 	});
+	// }
+	// function for inserting items, left the data empty because we used the prefixes to generate the names and uris
+	// const out = await metaplex.candyMachines().insertItems({
+	// 	candyMachine,
+	// 	items: data,
+	// 	index: 0,
+	// });
+
+	// console.log(out.response.signature);
+
+	console.log(candyMachine.itemsLoaded);
 };
 
 main();

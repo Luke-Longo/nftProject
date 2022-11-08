@@ -99,13 +99,11 @@ export const editFiles = async (items: number, type: "json" | "png") => {
 		);
 
 		const fileToUpload: ShadowFile = {
-			name: `${i - 1}.${type}`,
+			name: `${i}.${type}`,
 			file: fileBuff,
 		};
 
-		const uri = `https://shdw-drive.genesysgo.net/7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ/${
-			i - 1
-		}.${type}`;
+		const uri = `https://shdw-drive.genesysgo.net/7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ/${i}.${type}`;
 
 		const editRes = await drive.editFile(
 			new PublicKey(bucket),
