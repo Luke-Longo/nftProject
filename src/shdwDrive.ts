@@ -42,7 +42,7 @@ export const uploadCollectionSingle = async (
 	type: "json" | "png"
 ): Promise<string> => {
 	const drive = await new ShdwDrive(connection, wallet).init();
-	const fileBuff = fs.readFileSync(`./assets/${name}.${type}`);
+	const fileBuff = fs.readFileSync(`./assets/#${name}.${type}`);
 	const fileToUpload: ShadowFile = {
 		name,
 		file: fileBuff,
@@ -78,7 +78,7 @@ export const uploadCollection = async (
 		);
 
 		const fileToUpload: ShadowFile = {
-			name: `${i}.${type}`,
+			name: `#${i}.${type}`,
 			file: fileBuff,
 		};
 
@@ -99,11 +99,11 @@ export const editFiles = async (items: number, type: "json" | "png") => {
 		);
 
 		const fileToUpload: ShadowFile = {
-			name: `${i}.${type}`,
+			name: `#${i}.${type}`,
 			file: fileBuff,
 		};
 
-		const uri = `https://shdw-drive.genesysgo.net/7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ/${i}.${type}`;
+		const uri = `https://shdw-drive.genesysgo.net/7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ/#${i}.${type}`;
 
 		const editRes = await drive.editFile(
 			new PublicKey(bucket),
@@ -117,9 +117,10 @@ export const editFiles = async (items: number, type: "json" | "png") => {
 };
 
 const main = async () => {
-	// const locations = await uploadCollection(10, "json");
+	const locations = await uploadCollection(10, "json");
+	console.log(locations);
 
-	await editFiles(10, "json");
+	// await editFiles(10, "json");
 };
 
 main();

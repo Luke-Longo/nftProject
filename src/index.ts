@@ -76,13 +76,13 @@ const main = async () => {
 	});
 
 	// let data = [];
-	// for (let i = 1; i < 10; i++) {
+	// for (let i = 0; i < 10; i++) {
 	// 	data.push({
 	// 		name: "",
 	// 		uri: "",
 	// 	});
 	// }
-	// function for inserting items, left the data empty because we used the prefixes to generate the names and uris
+	// // function for inserting items, left the data empty because we used the prefixes to generate the names and uris
 	// const out = await metaplex.candyMachines().insertItems({
 	// 	candyMachine,
 	// 	items: data,
@@ -92,6 +92,14 @@ const main = async () => {
 	// console.log(out.response.signature);
 
 	console.log(candyMachine.itemsLoaded);
+
+	const resp = await metaplex.candyMachines().mint({
+		candyMachine,
+		collectionUpdateAuthority: collectionAuthority.publicKey,
+	});
+
+	console.log(resp.response.signature);
+	console.log(resp.nft.name);
 };
 
 main();
