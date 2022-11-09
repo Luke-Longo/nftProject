@@ -75,6 +75,19 @@ const main = async () => {
 		address: new PublicKey("2Rn6Nqgp24wJgT3cq2Ey8rDaAbCN5vk3WsgCrcjPyYpf"),
 	});
 
+	await metaplex.candyMachines().update({
+		candyMachine,
+		itemSettings: {
+			type: "configLines",
+			prefixName: "Elegant Eye #$ID+1$",
+			nameLength: 0,
+			prefixUri:
+				"https://shdw-drive.genesysgo.net/7ne9NYWDM62CjM6Y6Z9VrFDBktvHjeb24rWKw8epZMMZ/$ID+1$.json",
+			uriLength: 0,
+			isSequential: false,
+		},
+	});
+
 	// let data = [];
 	// for (let i = 0; i < 10; i++) {
 	// 	data.push({
@@ -91,14 +104,17 @@ const main = async () => {
 
 	// console.log(out.response.signature);
 
-	console.log(candyMachine.itemsLoaded);
+	const updatedCandyMachine = await metaplex
+		.candyMachines()
+		.refresh(candyMachine);
 
 	const resp = await metaplex.candyMachines().mint({
-		candyMachine,
+		candyMachine: updatedCandyMachine,
 		collectionUpdateAuthority: collectionAuthority.publicKey,
 	});
 
 	console.log(resp.response.signature);
+
 	console.log(resp.nft.name);
 };
 
